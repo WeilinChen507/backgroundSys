@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.weilin.backgroundSys.dao.RoleDao">
+	<!-- 为RoleDao提供sql配置 -->
+	
+	<select id="getRuleIdsByAdminId" resultType="String">
+		select rule_ids
+		from role 
+		where id = (
+			select role_id from admin_role where admin_id = #{adminID}
+		)
+	</select>
+	
+	
+</mapper>

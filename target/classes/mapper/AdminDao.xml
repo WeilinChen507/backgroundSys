@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.weilin.backgroundSys.dao.AdminDao">
+	<!-- 为AdminDao提供sql配置 -->
+	
+	<select id="login" resultType="Admin">
+		select id, admin_account ,admin_fullname, admin_phone, status, admin_ticket
+		from admin 
+		where admin_phone = #{adminPhone} and admin_password = #{adminPassword}
+	</select>
+	
+	
+</mapper>

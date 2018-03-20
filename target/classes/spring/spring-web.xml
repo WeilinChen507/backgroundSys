@@ -17,13 +17,25 @@
     c:xml,json的默认读写支持-->
     <mvc:annotation-driven/>
 
+    
+
     <!--2.静态资源默认servlet配置-->
     <!--
         1).加入对静态资源处理：js,gif,png
         2).允许使用 "/" 做整体映射
     -->
-    <mvc:default-servlet-handler/>
+     <mvc:default-servlet-handler/>
 
+	<!-- 配置拦截器拦截登录 -->
+    <mvc:interceptors>
+    	<mvc:interceptor>
+    		<!-- 拦截所有请求，在方法中过滤登录请求 -->
+    		<mvc:mapping path="/**"/>
+    		<!-- 定义interceptor -->
+    		<bean class="cn.weilin.backgroundSys.interceptor.AuthorizationInterceptor" />
+    	</mvc:interceptor>
+    </mvc:interceptors>
+    
     <!--3：配置JSP 显示ViewResolver-->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
@@ -33,4 +45,5 @@
 
     <!--4:扫描web相关的controller-->
     <context:component-scan base-package="cn.weilin.backgroundSys.web"/>
+    
 </beans>

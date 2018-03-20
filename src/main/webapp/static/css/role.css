@@ -1,0 +1,63 @@
+@CHARSET "UTF-8";
+.layui-form-item .layui-input-inline{
+	width: 600px;
+}
+
+.rulesWrap>.layui-form-label,
+.rulesWrap>.rulesBlock{
+	float: left;
+}
+.clear{
+	content: ' ';
+	clear: both;
+	overflow: hidden;
+	display: block;
+}
+.rulesBlock{
+	width: 1000px;
+}
+.rule-Item{
+	border:1px solid #ddd;
+	border-bottom: none;
+	float: left;
+}
+.rule-Item:last-child{
+	border-bottom:1px solid #ddd;
+}
+.rule-Item>.left{
+	float: left;
+	padding: 15px;
+	color: #333;
+	font-weight: 600;
+	min-width: 120px;
+}
+.rule-Item>.right{
+	float: left;
+	border-left:1px solid #ddd;
+}
+.rule-Item .secondLevelRule{
+	font-weight: 600;
+	line-height: 54px;
+}
+.inputs{
+	border-top: 1px solid #ddd;
+	line-height: 1;
+	padding: 8px 0;
+	min-height: 36px;
+}
+.rule-Item .layui-form-checkbox[lay-skin=primary] span{
+	color: #333 !important;
+}
+.rule-block{
+	border-bottom:1px solid #ddd;
+	padding: 0 15px;
+	width: 700px;
+}
+.rule-block:last-child{
+	border-bottom: none;
+}
+.rule-block .layui-unselect.layui-form-checkbox{
+	margin-right: 30px;
+	margin-bottom: 10px;
+	margin-top: 10px;
+}

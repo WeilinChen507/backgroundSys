@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.weilin.backgroundSys.dao.RuleDao">
+	
+	
+	<!-- 此处${ruleIds} 不能更换为 #{ruleIds} 
+		此处无发生sql注入的风险
+		更换为$则只能查出第一个
+	 -->
+	<select id="getRuleListByIds" parameterType="String" resultType="Rule">
+		select id, rule_name, rule, is_menu, parent_id, icon, sort
+		from rule 
+		where status = 1 and 
+		id in (${ruleIds})
+		order by sort 
+	</select>
+	
+	<select id="getAllRuleList" resultType="Rule">
+		select id, rule_name, rule, is_menu, parent_id, icon, sort
+		from rule 
+		where status = 1 
+		order by sort 
+	</select>
+	
+</mapper>

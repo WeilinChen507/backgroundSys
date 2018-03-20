@@ -1,0 +1,22 @@
+@CHARSET "UTF-8";
+/*登录页面css*/
+.loginWrap{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 500px;
+	height: 360px;
+	margin-top: -180px;
+	margin-left: -280px;
+	z-index: 9999;
+}
+.loginWrap h2{
+	font-size: 22px;
+	text-align: center;
+	font-weight: 600;
+	color: #999;
+	margin-bottom: 50px;
+}
+.layui-form-item .layui-input-inline{
+	width: 230px;
+}

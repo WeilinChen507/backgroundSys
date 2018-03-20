@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.weilin.backgroundSys.dao.SettingDao">
+	
+	<select id="getWebTitle" resultType="String">
+		select website_title
+		from setting 
+	</select>
+	
+	<select id="getCopyright" resultType="String">
+		select copyright
+		from setting 
+	</select>
+	
+	<select id="getWebSetting" resultType="Setting">
+		select website_title, copyright, id
+		from setting 
+	</select>
+	
+	<update id="updateCopyright">
+		update setting set copyright = #{copyright}
+	</update>
+	
+	<update id="updateWebTitle">
+		update setting set website_title = #{webTitle}
+	</update>
+	
+	<update id="updateWebSetting">
+		update setting 
+		set copyright = #{copyright}, website_title = #{webTitle}
+	</update>
+	
+</mapper>
