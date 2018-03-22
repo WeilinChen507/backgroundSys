@@ -9,23 +9,23 @@ import java.util.Date;
  */
 public class Role {
 
-	int id;
+	private int id;
 	
 	//权限名称
-	String roleName;
+	private String roleName;
 	
 	//权限id所构成的集合
-	String ruleIds;
+	private String ruleIds;
 	
 	//角色状态 1正常 2禁用 默认为禁用
-	short status;
+	private short status;
 	
 	//注释
-	String remark;
+	private	String remark;
 	
-	Date createTime;
+	private Date createTime;
 	
-	Date updateTime;
+	private Date updateTime;
 
 	public int getId() {
 		return id;

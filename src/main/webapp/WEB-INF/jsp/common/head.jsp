@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta charset="utf-8">
 
-<link rel="stylesheet" href= "<c:url value='/static/layui/css/layui.css'/>"  /> 
+<link rel="stylesheet" href= "<c:url value='/static/layui/css/layui.css'/>"  />
 <link rel="stylesheet" href= "<c:url value='/static/font-awesome/css/font-awesome.min.css'/>"  /> 
 <link rel="stylesheet" type="text/css" href="<c:url value='/static/layui/font/iconfont.css'/>" />
 <link rel="stylesheet" type="text/css" href="<c:url value='/static/css/global.css'/>" />

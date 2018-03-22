@@ -1,5 +1,7 @@
 package cn.weilin.backgroundSys.service.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -50,6 +52,12 @@ public class AdminServiceImpl implements AdminService {
 			admin.setRuleList(ruleDao.getRuleListByIds(ruleIds));
 		}
 		return admin;
+	}
+
+	@Override
+	public List<Admin> getAdminList() {
+		List<Admin> list = adminDao.getAllAdminWithRole();
+		return list;
 	}
 
 	

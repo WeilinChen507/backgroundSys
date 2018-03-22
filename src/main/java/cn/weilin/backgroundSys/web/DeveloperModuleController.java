@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import cn.weilin.backgroundSys.service.RoleService;
 import cn.weilin.backgroundSys.service.SettingService;
 
 @Controller
@@ -15,6 +16,10 @@ public class DeveloperModuleController {
 
 	@Autowired
 	SettingService settingService;
+	
+	@Autowired
+	RoleService roleService;
+	
 	
 	/**
 	 * 修改网站设置
@@ -46,4 +51,19 @@ public class DeveloperModuleController {
 		request.getSession().setAttribute("webTitle", settingService.getWebTitle());
 		return "developer_module/website_setting";
 	}
+	
+	
+	/**
+	 * 角色管理模块 角色列表
+	 * @param model
+	 * @return
+	 */
+	@RequestMapping("/role_list")
+	public String roleList(Model model) {
+		//列表
+		model.addAttribute("list", roleService.getRoleList());
+		return "developer_module/role_list";
+	}
+	
+	
 }

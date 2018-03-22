@@ -11,34 +11,46 @@ import java.util.List;
  */
 public class Admin {
 
-	int id;
+	private int id;
 	
 	//账号
-	String adminAccount;
+	private String adminAccount;
 	
-	String adminPassword;
+	private String adminPassword;
 	
-	String adminFullname;
+	private	String adminFullname;
 	
 	//手机密码
-	String adminPhone;
+	private String adminPhone;
 	
 	//状态 1可用 2禁用 默认2
-	short status;
+	private short status;
 	
 	//抢登
-	String adminTiket;
+	private String adminTiket;
 	
-	Date lastLoginTime;
+	private Date lastLoginTime;
 	
-	String lastLoginIp;
+	private String lastLoginIp;
 	
-	Date createTime;
+	private Date createTime;
 	
-	Date updateTime;
+	private Date updateTime;
 	
 	//权限集合
-	List<Rule> ruleList;
+	private List<Rule> ruleList;
+	
+	public Role getRole() {
+		return role;
+	}
+
+	public void setRole(Role role) {
+		this.role = role;
+	}
+
+	private Role role;
+	
+	
 	
 	public List<Rule> getRuleList() {
 		return ruleList;

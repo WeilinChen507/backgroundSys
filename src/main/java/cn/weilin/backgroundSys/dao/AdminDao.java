@@ -1,5 +1,7 @@
 package cn.weilin.backgroundSys.dao;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 
 import cn.weilin.backgroundSys.entity.Admin;
@@ -19,6 +21,9 @@ public interface AdminDao {
 	 */
 	Admin login(@Param("adminPhone")String adminPhone, @Param("adminPassword")String adminPassword);
 	
-	
-	
+	/**
+	 * 获得管理员信息 包含其角色清楚
+	 * @return
+	 */
+	List<Admin> getAllAdminWithRole();
 }

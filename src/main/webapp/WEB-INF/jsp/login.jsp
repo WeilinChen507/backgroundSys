@@ -4,8 +4,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<link rel="stylesheet" href="<c:url value='/static/css/login.css'/>" />
 	<%@ include file="common/head.jsp" %>
-	<link rel="stylesheet" href= <c:url value ="/static/css/login.css" /> />
 </head>
 <body>
 	<div class="loginWrap">
@@ -14,8 +14,8 @@
 			<div class="layui-form-item">
 				<label class="layui-form-label">账号</label>
 				<div class="layui-input-block">
-					<input type="text" name="adminPhone" value="${adminPhone}"
-					autocomplete="off" placeholder="请输入手机号码" class="layui-input" lay-verify="required">
+					<input  class="layui-input" type="text" name="adminPhone" value="${adminPhone}"
+					autocomplete="off" placeholder="请输入手机号码" lay-verify="required">
 				</div>
 			</div>
 			<div class="layui-form-item">

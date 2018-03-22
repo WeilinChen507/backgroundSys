@@ -13,5 +13,9 @@
 		)
 	</select>
 	
+	<select id="getAllRole" resultType="Role">
+		select id, role_name, rule_ids, status, remark, create_time, update_time 
+		from role
+	</select>
 	
 </mapper>

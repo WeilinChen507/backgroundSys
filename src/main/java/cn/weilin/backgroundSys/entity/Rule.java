@@ -9,31 +9,31 @@ import java.util.Date;
  */
 public class Rule {
 
-	int id;
+	private int id;
 	
-	String ruleName;
+	private String ruleName;
 	
 	//权限规则
-	String rule;
+	private String rule;
 	
 	//是否为菜单 1是2否 默认2
-	short isMenu;
+	private short isMenu;
 	
 	//父级ID 0为1级  非0为子级
-	int parentId;
+	private int parentId;
 	
 	//图标
-	String icon;
+	private String icon;
 	
 	//排序
-	int sort;
+	private int sort;
 	
 	//状态 1可用 2禁用 默认为2
-	short status;
+	private short status;
 	
-	Date createTime;
+	private Date createTime;
 	
-	Date updateTime;
+	private Date updateTime;
 
 	public int getId() {
 		return id;

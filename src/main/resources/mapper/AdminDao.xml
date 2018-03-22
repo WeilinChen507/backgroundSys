@@ -12,4 +12,15 @@
 	</select>
 	
 	
+	<select id="getAllAdminWithRole" resultType="Admin">
+		select A.id, A.admin_account, A.admin_fullname, A.admin_phone, A.status,
+			   R.role_name "role.role_name", 
+			   R.rule_ids "role.rule_ids"
+		from admin A left join admin_role AR
+				on A.id = AR.admin_id
+					 left join role R
+				on R.id = AR.role_id
+	</select>
+	
+	
 </mapper>

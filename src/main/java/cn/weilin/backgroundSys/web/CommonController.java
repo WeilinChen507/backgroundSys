@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-
 import cn.weilin.backgroundSys.service.SettingService;
 
 /**
@@ -26,15 +25,18 @@ public class CommonController {
 	 */
 	@RequestMapping("/title")
 	public String head(HttpServletRequest request, Model model) {
-		request.getSession().setAttribute("webTitle", settingService.getWebTitle());
-		model.addAttribute("webTitle", settingService.getWebTitle());
+		//request.getSession().setAttribute("webTitle", settingService.getWebTitle());
+		//model.addAttribute("webTitle", settingService.getWebTitle());
+		System.out.println("调用headController");
 		return "common/title";
 	}
 	
 	@RequestMapping("/nav")
 	public String nav(HttpServletRequest request, Model model) {
-		request.getSession().setAttribute("webTitle", settingService.getWebTitle());
-		model.addAttribute("webTitle", settingService.getWebTitle());
+		//request.getSession().setAttribute("webTitle", settingService.getWebTitle());
+		//model.addAttribute("webTitle", settingService.getWebTitle());
+		System.out.println("调用navController");
+
 		return "common/nav";
 	}
 	

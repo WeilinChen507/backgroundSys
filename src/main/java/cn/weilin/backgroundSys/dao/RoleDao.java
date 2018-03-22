@@ -1,6 +1,10 @@
 package cn.weilin.backgroundSys.dao;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
+
+import cn.weilin.backgroundSys.entity.Role;
 
 /**
  * 权限表 Dao类
@@ -16,5 +20,9 @@ public interface RoleDao {
 	 */
 	public String getRuleIdsByAdminId(@Param("adminID")int adminID);
 	
-	
+	/**
+	 * 获得所有角色集合
+	 * @return
+	 */
+	public List<Role> getAllRole();
 }

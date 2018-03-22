@@ -1,5 +1,8 @@
 package dao;
 
+
+import java.util.List;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,4 +36,18 @@ public class TestAdminDao {
 			System.out.println("创建时间为" + admin.getCreateTime());
 		}
 	}
+	
+	@Test
+	public void testgetAllAdminWithRole(){
+		List<Admin> list = adminDao.getAllAdminWithRole();
+		for(Admin admin: list) {
+			System.out.println(admin.getAdminAccount());
+			System.out.println(admin.getAdminFullname());
+			if (admin.getRole() != null) {
+				System.out.println(admin.getRole().getRoleName());
+			}
+			System.out.println("=============");
+		}
+	}
+	
 }

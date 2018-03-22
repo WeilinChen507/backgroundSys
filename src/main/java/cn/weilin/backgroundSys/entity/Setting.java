@@ -7,13 +7,13 @@ package cn.weilin.backgroundSys.entity;
  */
 public class Setting {
 	
-	int id;
+	private int id;
 	
 	//ÍøÕ¾±êÌâ
-	String websiteTitle;
+	private	String websiteTitle;
 	
 	//ÍøÕ¾°æÈ¨
-	String copyright;
+	private	String copyright;
 
 	public int getId() {
 		return id;

@@ -30,6 +30,7 @@ public class LoginController {
 	 * 登录页面展示
 	 * @param model
 	 * @return
+	 * TODO status为禁用时的验证
 	 */
 	@RequestMapping(value = "/login")
 	public String login(
@@ -55,7 +56,7 @@ public class LoginController {
 			//默认过期时间为一小时
 			request.getSession().setAttribute("admin", admin);
 			request.getSession().setAttribute("adminLoginTime", new Date().getTime());
-			return "redirect:/user_module/index";
+			return "redirect:/admin_module/index";
 		}
 	}
 	

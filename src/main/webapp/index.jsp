@@ -2,10 +2,10 @@
 
 <html>
 <head>
-<title>永远拥护黑圆大佬</title>
+<title>个人服务器23333333</title>
 </head>
-
 <body>
-<h1>永远拥护黑圆大佬</h1>
+	<a href="">跳转到个人博客首页</a>
+	<a href="http://120.79.46.60/backgroundSys/admin/login">跳转到个人博客后台</a>
 </body>
 </html>
