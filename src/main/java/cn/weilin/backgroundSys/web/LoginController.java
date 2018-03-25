@@ -15,7 +15,11 @@ import cn.weilin.backgroundSys.entity.Admin;
 import cn.weilin.backgroundSys.service.AdminService;
 import cn.weilin.backgroundSys.service.SettingService;
 
-
+/**
+ * 登录控制器 负责登录 退登
+ * @author Chen Weilin
+ *
+ */
 @Controller
 @RequestMapping("/admin")
 public class LoginController {
@@ -27,7 +31,7 @@ public class LoginController {
 	SettingService settingService;
 	
 	/**
-	 * ��¼ҳ��չʾ
+	 * 登录页面
 	 * @param model
 	 * @return
 	 * TODO statusΪ����ʱ����֤
@@ -38,65 +42,37 @@ public class LoginController {
 			String adminPassword,
 			HttpServletRequest request,
 			Model model) {
-		//��ӱ���session
+		//写入网站标题进session
 		request.getSession().setAttribute("webTitle", settingService.getWebTitle());
 		if (adminPhone == null && adminPassword == null) {
 			return "login";
 		}
-		//��¼��֤
+		//登录  判断是否登录成功֤
 		Admin admin = adminService.login(adminPhone, adminPassword);
 		if (admin == null) {
-			//�˺��������
+			//失败 账号密码回填
 			model.addAttribute("adminPhone", adminPhone);
 			model.addAttribute("adminPassword", adminPassword);
 			model.addAttribute("error", "手机或密码错误");
 			return "login";
 		} else {
-			//���û���������Ϣ����session,����¼ʱ�����session
-			//Ĭ�Ϲ���ʱ��ΪһСʱ
+			//登录成功
+			//把非敏感信息写入session并跳转至首页
 			request.getSession().setAttribute("admin", admin);
 			request.getSession().setAttribute("adminLoginTime", new Date().getTime());
 			return "redirect:/admin_module/index";
 		}
 	}
-	
-//	/**
-//	 * ��¼���ӿڣ� Ҫ��ʹ��post����
-//	 * @return
-//	 * TODO :������Ϣ����
-//	 * TODO :��¼Ȩ��д��session
-//	 */
-//	@RequestMapping(value = "/loginForm", method = RequestMethod.POST)
-//	public String loginForm(
-//			@RequestParam("adminPhone")String adminPhone, 
-//			@RequestParam("adminPassword")String adminPassword,
-//			HttpServletRequest request,
-//			Model model) {
-//		Admin admin = adminService.login(adminPhone, adminPassword);
-//		if (admin == null) {
-//			//�˺��������
-//			model.addAttribute("adminPhone", adminPhone);
-//			model.addAttribute("adminPassword", adminPassword);
-//			model.addAttribute("error", "�˻����������");
-//			return "login";
-//		} else {
-//			//���û���������Ϣ����session,����¼ʱ�����session
-//			//Ĭ�Ϲ���ʱ��ΪһСʱ
-//			request.getSession().setAttribute("admin", admin);
-//			request.getSession().setAttribute("adminLoginTime", new Date().getTime());
-//			return "redirect:/user_module/index";
-//		}
-//	}
-	
+
 	/**
-	 * �˳���¼
+	 * 退出登录
 	 * @param request
 	 * @param model
 	 * @return
 	 */
 	@RequestMapping("/logout")
 	public String logout(HttpServletRequest request, Model model){
-		//���session����վ���ⲻ���
+		//清空session
 		request.getSession().invalidate();
 		request.getSession().setAttribute("webTitle", settingService.getWebTitle());
 		return "redirect:/admin/login";
