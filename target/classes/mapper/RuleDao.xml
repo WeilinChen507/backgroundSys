@@ -24,4 +24,21 @@
 		order by sort 
 	</select>
 	
+	<!--
+		 有待优化
+		查出一级菜单 二级菜单 三级非菜单
+	 -->
+	<select id="getRuleListByParentSort" resultType="Rule">
+		select id, rule_name, rule, status, is_menu, parent_id, icon, sort, create_time
+		from rule
+		where ( 
+		sort = #{sort} and parent_id = 0 
+		) or ( 
+			parent_id = (select id from rule where sort = #{sort} and parent_id = 0) 
+		) or (
+			parent_id in(select id from rule where parent_id = (select id from rule where sort = #{sort} and parent_id = 0) )
+		)
+		order by sort
+	</select>
+	
 </mapper>

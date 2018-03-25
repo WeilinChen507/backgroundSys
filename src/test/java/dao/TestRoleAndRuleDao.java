@@ -48,4 +48,15 @@ public class TestRoleAndRuleDao {
 		}
 	}
 	
+	@Test
+	public void TestGetRuleListByParentSort() {
+		int sort = 2;
+		List<Rule> ruleList = ruleDao.getRuleListByParentSort(sort);
+		
+		for(Rule rule: ruleList) {
+			System.out.println("id：" + rule.getId() + " 名称："+ rule.getRuleName() + "\n\t"
+			+ " 排序："+ rule.getSort() + " 是否禁用：" + rule.getStatus() + " 父id：" + rule.getParentId());			
+		}
+	}
+	
 }

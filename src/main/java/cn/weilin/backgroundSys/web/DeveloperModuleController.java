@@ -1,13 +1,18 @@
 package cn.weilin.backgroundSys.web;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
+import cn.weilin.backgroundSys.entity.Rule;
 import cn.weilin.backgroundSys.service.RoleService;
+import cn.weilin.backgroundSys.service.RuleService;
 import cn.weilin.backgroundSys.service.SettingService;
 
 /**
@@ -24,6 +29,9 @@ public class DeveloperModuleController {
 	
 	@Autowired
 	RoleService roleService;
+	
+	@Autowired
+	RuleService ruleService;
 	
 	
 	/**
@@ -67,6 +75,22 @@ public class DeveloperModuleController {
 	public String roleList(Model model) {
 		model.addAttribute("list", roleService.getRoleList());
 		return "developer_module/role_list";
+	}
+	
+	/**
+	 * 权限列表页 分页查询
+	 * 每一页对于一个模块及其子模块
+	 * @param page 页数从1开始 默认为0
+	 * @param model
+	 * @return
+	 */
+	@RequestMapping(value = "/rule_list",
+			method = RequestMethod.GET)
+	public String ruleList(String page,
+			Model model) {
+		List<Rule> list = ruleService.getAllRuleByPage(page);
+		model.addAttribute("list", list);
+		return "developer_module/rule_list";
 	}
 	
 	

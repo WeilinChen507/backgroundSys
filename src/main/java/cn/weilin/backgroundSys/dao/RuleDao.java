@@ -27,4 +27,11 @@ public interface RuleDao {
 	 * @return List<Rule>
 	 */
 	public List<Rule> getAllRuleList();
+	
+	/**
+	 * 根据最父一级的排序获取其与其子级的权限集合
+	 * @param 排序序号
+	 * @return
+	 */
+	public List<Rule> getRuleListByParentSort(@Param("sort")int sort);
 }
