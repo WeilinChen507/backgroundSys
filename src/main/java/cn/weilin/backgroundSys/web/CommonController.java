@@ -9,9 +9,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import cn.weilin.backgroundSys.service.SettingService;
 
 /**
- * ¹«¹²²¿·ÖµÄ¿ØÖÆÆ÷
+ * å…¬å…±æ¨¡å—
  * @author Chen Weilin
- *
+ * ç°å·²åˆ é™¤ ä»…ç”¨ä½œæµ‹è¯• æœ€ååˆ é™¤
  */
 @Controller
 public class CommonController {
@@ -19,15 +19,12 @@ public class CommonController {
 	@Autowired
 	SettingService settingService;
 	
-	/**
-	 * Í·²¿£¬¼ÓÔØÍøÕ¾Ãû³Æ±êÌâ
-	 * @param model
-	 */
+
 	@RequestMapping("/title")
 	public String head(HttpServletRequest request, Model model) {
 		//request.getSession().setAttribute("webTitle", settingService.getWebTitle());
 		//model.addAttribute("webTitle", settingService.getWebTitle());
-		System.out.println("µ÷ÓÃheadController");
+		System.out.println("ï¿½ï¿½ï¿½ï¿½headController");
 		return "common/title";
 	}
 	
@@ -35,7 +32,7 @@ public class CommonController {
 	public String nav(HttpServletRequest request, Model model) {
 		//request.getSession().setAttribute("webTitle", settingService.getWebTitle());
 		//model.addAttribute("webTitle", settingService.getWebTitle());
-		System.out.println("µ÷ÓÃnavController");
+		System.out.println("ï¿½ï¿½ï¿½ï¿½navController");
 
 		return "common/nav";
 	}

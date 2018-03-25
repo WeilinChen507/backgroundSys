@@ -1,16 +1,19 @@
 package cn.weilin.backgroundSys.dto;
 
 /**
- * ��Ҫ����json��ʽ�ķ�װ��
+ * 所有ajax返回的json数据都用该类进行一个封装
  * @author Chen Weilin
  *
  */
 public class JsonResult<T> {
 	
+	
 	private boolean success;
 	
+	//访问成功时，data为数据域 否则应为null
 	private T data;
 	
+	//失败时的错误信息描述，否则为null
 	private String error;
 
 	public boolean isSuccess() {

@@ -5,7 +5,7 @@ import org.springframework.util.DigestUtils;
 public class MyStringUtils {
 
 	/**
-	 * 对输入字符串进行md5加密
+	 * 瀵逛紶鍏ョ殑瀛楃涓茶繘琛宮d5鍔犲瘑
 	 * @param string
 	 * @return
 	 */

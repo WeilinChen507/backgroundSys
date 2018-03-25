@@ -13,7 +13,7 @@ import cn.weilin.backgroundSys.entity.Admin;
 import cn.weilin.backgroundSys.service.AdminService;
 
 /**
- * 
+ * ç®¡ç†å‘˜ä¸šåŠ¡é€»è¾‘å¤„ç† å®ç°ç±»
  * @author Chen Weilin
  *
  */
@@ -30,25 +30,25 @@ public class AdminServiceImpl implements AdminService {
 	private RuleDao ruleDao;
 	
 	/**
-	 * µÇÂ¼½Ó¿ÚµÄÊµÏÖ²Ù×÷
+	 * ç®¡ç†å‘˜ç™»å½•æ¥å£
 	 */
 	public Admin login(String adminPhone, String adminPassword) {
-		//Êı¾İ¿âÖĞ´¢´æµÄÊÇ¼ÓÃÜºóµÄÃÜÂë×Ö·û´®
-		//²éÑ¯Ê±Ó¦ÏÈ½øĞĞ¼ÓÃÜ
+		//å°†ç”¨æˆ·æ‰€å¡«å…¥çš„å¯†ç è¿›è¡Œmd5åŠ å¯†
+		//ç”¨æˆ·æ‰€å¡«çš„æ‰‹æœºå’ŒåŠ å¯†åçš„å¯†ç è¿›è¡Œæ•°æ®åº“åŒ¹é…
 		adminPassword = MyStringUtils.md5(adminPassword);
 		Admin admin = adminDao.login(adminPhone, adminPassword);
-		//µÇÂ½Ê§°ÜÖ±½Ó·µ»Ønull
+		//ç™»é™†å¤±è´¥
 		if (admin == null) {
 			return null;
 		}
-		//µÇÂ¼³É¹¦Ôò½«¶ÔÓ¦ÓÃ»§µÄÈ¨ÏŞ¼¯ºÏĞ´Èë
-		//Ê×ÏÈÅĞ¶ÏÓÃ»§ÊÇ·ñÎª³¬¼¶¹ÜÀíÔ±
+		//ç™»å½•æˆåŠŸ
+		//è·å–è¯¥ç®¡ç†å‘˜çš„æƒé™
 		String ruleIds = roleDao.getRuleIdsByAdminId(admin.getId());
 		if ("".equals(ruleIds) || null == ruleIds) {
-			//³¬¹Ü,Ğ´ÈëËùÓĞÈ¨ÏŞ
+			//æƒé™ä¸ºç©º é»˜è®¤ä¸ºè¶…ç®¡ï¼Œ å†™å…¥æ‰€æœ‰æƒé™
 			admin.setRuleList(ruleDao.getAllRuleList());
 		} else {
-			//·Ç³¬¹Ü£¬Ğ´Èë¶ÔÓ¦È¨ÏŞ
+			//å°†æƒé™å†™å…¥adminä¸­
 			admin.setRuleList(ruleDao.getRuleListByIds(ruleIds));
 		}
 		return admin;

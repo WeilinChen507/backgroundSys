@@ -3,7 +3,8 @@ package cn.weilin.backgroundSys.entity;
 import java.util.Date;
 
 /**
- * È¨ÏŞÀà  Êı¾İ¿âÊµÌåÀà
+ * æƒé™ç±»
+ * æ•°æ®åº“å®ä½“ç±»
  * @author Chen Weilin
  *
  */
@@ -13,22 +14,22 @@ public class Rule {
 	
 	private String ruleName;
 	
-	//È¨ÏŞ¹æÔò
+	//æƒé™è§„åˆ™  uri
 	private String rule;
 	
-	//ÊÇ·ñÎª²Ëµ¥ 1ÊÇ2·ñ Ä¬ÈÏ2
+	//æ˜¯å¦ä¸ºèœå• 1æ˜¯2å¦  é»˜è®¤2
 	private short isMenu;
 	
-	//¸¸¼¶ID 0Îª1¼¶  ·Ç0Îª×Ó¼¶
+	//çˆ¶çº§ID
 	private int parentId;
 	
-	//Í¼±ê
+	//å›¾æ ‡
 	private String icon;
 	
-	//ÅÅĞò
+	//æ’åº
 	private int sort;
 	
-	//×´Ì¬ 1¿ÉÓÃ 2½ûÓÃ Ä¬ÈÏÎª2
+	//çŠ¶æ€  1å¯ç”¨2ç¦ç”¨  2é»˜è®¤
 	private short status;
 	
 	private Date createTime;

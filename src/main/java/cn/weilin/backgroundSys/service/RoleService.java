@@ -5,14 +5,14 @@ import java.util.List;
 import cn.weilin.backgroundSys.entity.Role;
 
 /**
- * ½ÇÉ«¹ÜÀí ÒµÎñ´¦Àí
+ * è§’è‰²æ“ä½œä¸šåŠ¡
  * @author Chen Weilin
  *
  */
 public interface RoleService {
 
 	/**
-	 * »ñµÃËùÓĞ½ÇÉ«µÄ¼¯ºÏ
+	 * è·å¾—æ‰€æœ‰è§’è‰²é›†åˆ
 	 * @return
 	 */
 	public List<Role> getRoleList();

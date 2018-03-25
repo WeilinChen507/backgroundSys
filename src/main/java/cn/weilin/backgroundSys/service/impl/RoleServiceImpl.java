@@ -9,6 +9,11 @@ import cn.weilin.backgroundSys.dao.RoleDao;
 import cn.weilin.backgroundSys.entity.Role;
 import cn.weilin.backgroundSys.service.RoleService;
 
+/**
+ * 角色业务逻辑处理实现类
+ * @author Chen Weilin
+ *
+ */
 @Service
 public class RoleServiceImpl implements RoleService {
 

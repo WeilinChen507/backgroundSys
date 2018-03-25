@@ -11,49 +11,48 @@ import org.springframework.web.servlet.ModelAndView;
 import cn.weilin.backgroundSys.entity.Admin;
 
 /**
- * µÇÂ¼ÊÚÈ¨À¹½ØÆ÷
- * ¸ù¾İsessionÅĞ¶ÏÊÇ·ñµÇÂ¼»ò³¬Ê±£¬ÈôÎ´µÇÂ¼ÔòÌø×ªµ½µÇÂ¼Ò³Ãæ
+ * ç™»å½•æ‹¦æˆªå™¨
  * @author Chen Weilin
  *
  */
 public class AuthorizationInterceptor implements HandlerInterceptor {
 
-	//²»À¹½ØµÄÇëÇó
+	//éœ€è¦å¿½ç•¥æ‹¦æˆªçš„è¯·æ±‚
 	private static final String[] IGNORE_URI = {"/loginForm", "login"};
 	
 	/**
-	 * ÔÚpreHandle·½·¨ÄÚ½øĞĞÀ¹½Ø£¬¸Ã·½·¨½«»áÔÚController´¦ÀíÖ®Ç°µ÷ÓÃ
-	 * ·µ»ØÖµÎªtrueÍùÏÂÖ´ĞĞ£¬·ñÔòÕû¸öÇëÇó½áÊø
+	 * é€šè¿‡sessionåˆ¤æ–­æ˜¯å¦ç™»å½•
+	 * å°†æœªç™»å½•çš„æ‹¦æˆªå¹¶è·³è½¬è‡³ç™»å½•é¡µé¢
 	 */
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
-		//flag±íÊ¾ÊÇ·ñµÇÂ¼£¬Ä¬ÈÏÎ´µÇÂ¼
+		//flagè¡¨ç¤ºæœ‰æ— ç™»å½• é»˜è®¤ä¸ºfalse
 		boolean flag = false;
-		//ÅĞ¶ÏÊÇ·ñ¸ÃÇëÇóĞèÒªÀ¹½Ø
+		//åˆ¤æ–­æ˜¯å¦æ˜¯éœ€è¦æ‹¦æˆª
 		String servletPath = request.getServletPath();
 		for (String s : IGNORE_URI) {
 			if (servletPath.contains(s)) {
-				//²»ĞèÒªÀ¹½Ø
+				//ä¸éœ€è¦æ‹¦æˆª
 				flag = true;
 				break;
 			}
 		}
 		if (!flag) {
-			//ÇëÇó±»À¹½Ø
+			//éœ€è¦æ‹¦æˆª
 			Admin admin = (Admin) request.getSession().getAttribute("admin");
 			if (admin == null) {
-				//ÓÃ»§Î´µÇÂ¼
+				//æœªç™»å½•
 				response.sendRedirect(request.getContextPath()+"/admin/login");
 			} else {
-				//ÒÑµÇÂ¼£¬ÅĞ¶ÏÊÇ·ñ¹ıÆÚ
+				//åˆ¤æ–­ç™»å½•æ˜¯å¦è¶…æ—¶ é»˜è®¤ä¸º1å°æ—¶
 				long nowTime = new Date().getTime();
 				long adminLoginTime = (long) request.getSession().getAttribute("adminLoginTime");
 				if (nowTime - adminLoginTime >= 3600000) {	
-					//¹ıÆÚ
+					//ç™»å½•è¶…æ—¶
 					response.sendRedirect(request.getContextPath()+"/admin/login");
 				} else {
-					//Î´¹ıÆÚ£¬Ë¢ĞÂµÇÂ¼Ê±¼ä
+					//å·²ç™»å½• ä¸è¶…æ—¶ æ›´æ–°ç™»å½•æ—¶é—´è‡³session
 					request.getSession().setAttribute("adminLoginTime", nowTime);
 					flag = true;
 				}

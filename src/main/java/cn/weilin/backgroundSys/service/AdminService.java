@@ -7,22 +7,22 @@ import org.springframework.stereotype.Service;
 import cn.weilin.backgroundSys.entity.Admin;
 
 /**
- * ´¦Àí¹ÜÀíÔ±Ïà¹ØµÄÒµÎñÂß¼­
+ * ç®¡ç†å‘˜ä¸šåŠ¡æ¥å£
  * @author Chen Weilin
  */
 public interface AdminService {
 
 	/**
-	 * µÇÂ¼½Ó¿Ú
+	 * ç™»å½• æˆåŠŸåˆ™è¿”å›adminå¯¹è±¡ å¦åˆ™null
 	 * @param adminPhone
 	 * @param adminPassword
-	 * @return ÑéÖ¤³É¹¦·µ»Ø¹ÜÀíÔ±ÊµÌå£¬Ê§°ÜÔò·µ»Ønull
+	 * @return 
 	 */
 	public Admin login(String adminPhone, String adminPassword);
 	
 	/**
-	 * »ñµÃËùÓĞ¹ÜÀíÔ±ĞÅÏ¢ °üº¬¹ÜÀíÔ±½ÇÉ«
-	 * @return
+	 * è·å¾—æ‰€æœ‰ç®¡ç†å‘˜ ä¾›è¶…ç®¡ç”¨
+	 * @return æ‰€æœ‰ç®¡ç†å‘˜çš„é›†åˆ
 	 */
 	public List<Admin> getAdminList();
 }

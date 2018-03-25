@@ -7,23 +7,24 @@ import org.apache.ibatis.annotations.Param;
 import cn.weilin.backgroundSys.entity.Rule;
 
 /**
- * È¨ÏŞDaoÀà
+ * æƒé™Dao
  * @author Chen Weilin
  *
  */
 public interface RuleDao {
 
 	/**
-	 * ¸ù¾İÈ¨ÏŞµÄids»ñÈ¡¿ÉÓÃµÄÈ¨ÏŞ¼¯ºÏ
+	 * æ ¹æ®æƒé™IDé›†åˆè·å¾—è·å¾—æƒé™é›†åˆ
 	 * @param ruleIds
-	 * @return statusÎª1µÄÈ¨ÏŞ¼¯ºÏ
+	 * @return List<Rule>
 	 */
 	public List<Rule> getRuleListByIds(@Param("ruleIds")String ruleIds);
 	
 	/**
-	 * »ñµÃËùÓĞ¿ÉÓÃµÄÈ¨ÏŞ¼¯ºÏ ÊÊÓÃÓÚ³¬¹Ü
+	 * è·å¾—æ‰€æœ‰æƒé™é›†åˆ
+	 * ä¾›è¶…çº§ç®¡ç†å‘˜ è¶…çº§ç®¡ç†å‘˜æœ‰æƒé™ç®¡ç†
 	 * @param ruleIds
-	 * @return »ñµÃ³¬¹ÜµÄËùÓĞstatusÎª1µÄÈ¨ÏŞ
+	 * @return List<Rule>
 	 */
 	public List<Rule> getAllRuleList();
 }

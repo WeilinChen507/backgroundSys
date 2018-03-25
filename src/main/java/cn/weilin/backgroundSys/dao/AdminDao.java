@@ -7,22 +7,22 @@ import org.apache.ibatis.annotations.Param;
 import cn.weilin.backgroundSys.entity.Admin;
 
 /**
- * ¹ÜÀíÔ±ÁĞ±ídao
+ * ç®¡ç†å‘˜Dao
  * @author Chen Weilin
  *
  */
 public interface AdminDao {
 
 	/**
-	 * ¸ù¾İÕËºÅÃÜÂëÅĞ¶ÏÊÇ·ñÓĞ¸Ã
+	 * ç™»å½•
 	 * @param adminPhone
 	 * @param adminPassword
-	 * @return AdminÊµÌåÀà
+	 * @return æˆåŠŸè¿”å›Adminå®ä½“ç±»ï¼Œå¤±è´¥è¿”å›null
 	 */
 	Admin login(@Param("adminPhone")String adminPhone, @Param("adminPassword")String adminPassword);
 	
 	/**
-	 * »ñµÃ¹ÜÀíÔ±ĞÅÏ¢ °üº¬Æä½ÇÉ«Çå³ş
+	 * è¿”å›æ‰€æœ‰ç®¡ç†å‘˜ä¿¡æ¯ï¼ŒåŒ…å«è§’è‰²
 	 * @return
 	 */
 	List<Admin> getAllAdminWithRole();

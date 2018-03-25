@@ -3,7 +3,8 @@ package cn.weilin.backgroundSys.entity;
 import java.util.Date;
 
 /**
- * ½ÇÉ«È¨ÏŞ Êı¾İ¿âÓ³Éä±í
+ * è§’è‰²ç±»
+ * æ•°æ®åº“å®ä½“ç±»
  * @author Chen Weilin
  *
  */
@@ -11,16 +12,16 @@ public class Role {
 
 	private int id;
 	
-	//È¨ÏŞÃû³Æ
+	//è§’è‰²åç§°
 	private String roleName;
 	
-	//È¨ÏŞidËù¹¹³ÉµÄ¼¯ºÏ
+	//è§’è‰²çš„æƒé™idé›†åˆ
 	private String ruleIds;
 	
-	//½ÇÉ«×´Ì¬ 1Õı³£ 2½ûÓÃ Ä¬ÈÏÎª½ûÓÃ
+	//è§’è‰²çŠ¶æ€ 1å¯ç”¨ 2ç¦ç”¨ é»˜è®¤2
 	private short status;
 	
-	//×¢ÊÍ
+	//è§’è‰²æ³¨é‡Š
 	private	String remark;
 	
 	private Date createTime;

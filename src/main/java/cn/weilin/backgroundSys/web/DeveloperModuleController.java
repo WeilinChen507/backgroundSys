@@ -10,6 +10,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import cn.weilin.backgroundSys.service.RoleService;
 import cn.weilin.backgroundSys.service.SettingService;
 
+/**
+ * å¼€å‘è€…æ¨¡å— æ§åˆ¶å™¨
+ * @author Chen Weilin
+ *
+ */
 @Controller
 @RequestMapping(value = "/developer_module")
 public class DeveloperModuleController {
@@ -22,7 +27,7 @@ public class DeveloperModuleController {
 	
 	
 	/**
-	 * ĞŞ¸ÄÍøÕ¾ÉèÖÃ
+	 * æ›´æ–°ç½‘ç«™è®¾ç½® é¡µé¢
 	 * @param websiteTitle
 	 * @param copyright
 	 * @param model
@@ -30,7 +35,7 @@ public class DeveloperModuleController {
 	 */
 	@RequestMapping(value = "/website_setting")
 	public String websiteSetting(String websiteTitle, String copyright, HttpServletRequest request, Model model){
-		//Î´ĞŞ¸ÄÇ°µÄÍøÕ¾ĞÅÏ¢
+		//å¡«å…¥å·²è®¾ç½®çš„ä¿¡æ¯
 		model.addAttribute("websiteTitle", settingService.getWebTitle());
 		model.addAttribute("copyright", settingService.getCopyRight());
 		if (websiteTitle == null && copyright == null) {
@@ -38,29 +43,28 @@ public class DeveloperModuleController {
 		}
 		boolean isOk = settingService.updateWebsiteSetting(websiteTitle, copyright);
 		if (isOk) {
-			//ĞŞ¸Ä³É¹¦
-			model.addAttribute("tips", "ĞŞ¸Ä³É¹¦");
+			//æ›´æ–°æˆåŠŸ
+			model.addAttribute("tips", "æ›´æ–°æˆåŠŸ");
 		} else {
-			//ĞŞ¸ÄÊ§°Ü
-			model.addAttribute("tips", "ĞŞ¸ÄÊ§°Ü£¬ÇëÉÔºóÔÙÊÔ");
+			//å¤±è´¥
+			model.addAttribute("tips", "æ›´æ–°å¤±è´¥ï¼Œè¯·ç¨åå†è¯•");
 		}
-		//ĞŞ¸ÄºóµÄĞÅÏ¢ÌîÈë
+		//å›å¡«ä¿¡æ¯
 		model.addAttribute("websiteTitle", settingService.getWebTitle());
 		model.addAttribute("copyright", settingService.getCopyRight());
-		//¸üĞÂÍøÕ¾±êÌâ
+		//sessionä¸­çš„ç½‘ç«™æ ‡é¢˜æ›´æ–°
 		request.getSession().setAttribute("webTitle", settingService.getWebTitle());
 		return "developer_module/website_setting";
 	}
 	
 	
 	/**
-	 * ½ÇÉ«¹ÜÀíÄ£¿é ½ÇÉ«ÁĞ±í
+	 * è§’è‰²åˆ—è¡¨é¡µé¢
 	 * @param model
 	 * @return
 	 */
 	@RequestMapping("/role_list")
 	public String roleList(Model model) {
-		//ÁĞ±í
 		model.addAttribute("list", roleService.getRoleList());
 		return "developer_module/role_list";
 	}

@@ -1,7 +1,8 @@
 package cn.weilin.backgroundSys.entity;
 
 /**
- * ÍøÕ¾ÉèÖÃÀà
+ * ç½‘ç«™è®¾ç½®ç±»
+ * æ•°æ®åº“å®ä½“ç±»
  * @author Chen Weilin
  *
  */
@@ -9,10 +10,10 @@ public class Setting {
 	
 	private int id;
 	
-	//ÍøÕ¾±êÌâ
+	//ç½‘ç«™æ ‡é¢˜
 	private	String websiteTitle;
 	
-	//ÍøÕ¾°æÈ¨
+	//ç½‘ç«™ç‰ˆæƒ
 	private	String copyright;
 
 	public int getId() {

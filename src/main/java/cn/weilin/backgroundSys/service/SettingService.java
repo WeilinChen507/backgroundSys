@@ -3,26 +3,26 @@ package cn.weilin.backgroundSys.service;
 import org.springframework.stereotype.Service;
 
 /**
- * 公共部分的逻辑处理
+ * 缃戠珯淇℃伅鎿嶄綔涓氬姟
  * @author Chen Weilin
  */
 public interface SettingService {
 
 	/**
-	 * 获得网站标题
+	 * 鑾峰緱缃戠珯鏍囬
 	 * @return
 	 */
 	public String getWebTitle();
 	
 	/**
-	 * 获得网站版权信息
+	 * 鑾峰緱缃戠珯鐗堟潈
 	 * @return
 	 */
 	public String getCopyRight();
 	
 	/**
-	 * 更新网站信息 包括标题和版权
-	 * @return 成功返回true 失败返回false
+	 * 鏇存柊缃戠珯淇℃伅
+	 * @return 鏇存柊鏄惁鎴愬姛
 	 */
 	public boolean updateWebsiteSetting(String webTitle, String copyright);
 	

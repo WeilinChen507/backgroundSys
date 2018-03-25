@@ -6,6 +6,11 @@ import org.springframework.stereotype.Service;
 import cn.weilin.backgroundSys.dao.SettingDao;
 import cn.weilin.backgroundSys.service.SettingService;
 
+/**
+ * 网站设置业务逻辑实现类
+ * @author Chen Weilin
+ *
+ */
 @Service
 public class SettingServiceImpl implements SettingService {
 
@@ -29,7 +34,7 @@ public class SettingServiceImpl implements SettingService {
 	public boolean updateWebsiteSetting(String webTitle, String copyright) {
 		boolean hasTitle =  !(null == webTitle || "".equals(webTitle));
 		boolean hasCopyright = !(null == copyright || "".equals(copyright));
-		//���ݿ�Ӱ������ 0Ϊδ�޸� 1Ϊ�޸ĳɹ�
+		//是否更新成功 0为失败
 		int influencedNum = 0;
 		if (hasTitle && hasCopyright) {
 			influencedNum = settingDao.updateWebSetting(webTitle, copyright);

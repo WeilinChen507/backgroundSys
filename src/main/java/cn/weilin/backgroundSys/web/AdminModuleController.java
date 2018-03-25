@@ -9,6 +9,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import cn.weilin.backgroundSys.service.AdminService;
 import cn.weilin.backgroundSys.service.SettingService;
 
+/**
+ * ç®¡ç†å‘˜æ¨¡å— æ§åˆ¶å™¨
+ * @author Chen Weilin
+ *
+ */
 @Controller
 @RequestMapping(value = "/admin_module")
 public class AdminModuleController {
@@ -20,20 +25,20 @@ public class AdminModuleController {
 	AdminService adminService;
 	
 	/**
-	 * ÓÃ»§Ê×Ò³
+	 * é¦–é¡µ
 	 * url /user_module/index
 	 * @param model
 	 * @return
 	 */
 	@RequestMapping(value = "/index", method = RequestMethod.GET)
 	public String index(Model model) {
-		//½«ÍøÕ¾°æÈ¨ĞÅÏ¢Ğ´Èë
+		//ç½‘ç«™ç‰ˆæƒå†™å…¥attribute
 		model.addAttribute("copyright", settingService.getCopyRight());
 		return "admin_module/index";
 	}
 	
 	/**
-	 * ¹ÜÀíÔ±¹ÜÀí ¹ÜÀíÔ±ÁĞ±íÒ³
+	 * ç®¡ç†å‘˜åˆ—è¡¨é¡µ
 	 * @param model
 	 * @return
 	 */

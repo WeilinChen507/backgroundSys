@@ -7,21 +7,21 @@ import org.apache.ibatis.annotations.Param;
 import cn.weilin.backgroundSys.entity.Role;
 
 /**
- * È¨ÏŞ±í DaoÀà
+ * è§’è‰²Dao
  * @author Chen Weilin
  *
  */
 public interface RoleDao {
 	
 	/**
-	 * ¸ù¾İadminId»ñÈ¡¸Ã¹ÜÀíÔ±È¨ÏŞ¼¯ºÏ
+	 * æ ¹ç»adminIdæŸ¥è¯¢è¯¥ç®¡ç†å‘˜çš„æƒé™IDé›†åˆ
 	 * @param adminID
-	 * @return È¨ÏŞ¼¯ºÏ Èç 1,34,65,77
+	 * @return æƒé™IDé›†åˆ å¦‚ï¼š1,34,65,77
 	 */
 	public String getRuleIdsByAdminId(@Param("adminID")int adminID);
 	
 	/**
-	 * »ñµÃËùÓĞ½ÇÉ«¼¯ºÏ
+	 * è¿”å›æ‰€æœ‰è§’è‰²ç±»å‹
 	 * @return
 	 */
 	public List<Role> getAllRole();

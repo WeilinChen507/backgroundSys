@@ -4,8 +4,8 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * Êı¾İ¿âÊµÌåÀà
- * admin ¹ÜÀíÔ±ÊµÌåÀà 
+ * ç®¡ç†å‘˜ç±»
+ * æ•°æ®åº“å®ä½“ç±»
  * @author Chen Weilin
  *
  */
@@ -13,20 +13,20 @@ public class Admin {
 
 	private int id;
 	
-	//ÕËºÅ
+	//è´¦å·
 	private String adminAccount;
 	
 	private String adminPassword;
 	
 	private	String adminFullname;
 	
-	//ÊÖ»úÃÜÂë
+	//æ‰‹æœºå·ç  ä½œä¸ºç™»å½•ä¿¡æ¯ä¹‹ä¸€
 	private String adminPhone;
 	
-	//×´Ì¬ 1¿ÉÓÃ 2½ûÓÃ Ä¬ÈÏ2
+	//çŠ¶æ€ 1å¯ç”¨2ç¦ç”¨ï¼Œé»˜è®¤ä¸º2
 	private short status;
 	
-	//ÇÀµÇ
+	//ç®¡ç†å‘˜å…¥åœºåˆ¸ æŠ¢ç™»ç”¨
 	private String adminTiket;
 	
 	private Date lastLoginTime;
@@ -37,8 +37,13 @@ public class Admin {
 	
 	private Date updateTime;
 	
-	//È¨ÏŞ¼¯ºÏ
+	//one-many ç®¡ç†å‘˜æƒé™
 	private List<Rule> ruleList;
+	
+	//one-one ç®¡ç†å‘˜è§’è‰²
+	private Role role;
+	
+	
 	
 	public Role getRole() {
 		return role;
@@ -47,10 +52,6 @@ public class Admin {
 	public void setRole(Role role) {
 		this.role = role;
 	}
-
-	private Role role;
-	
-	
 	
 	public List<Rule> getRuleList() {
 		return ruleList;

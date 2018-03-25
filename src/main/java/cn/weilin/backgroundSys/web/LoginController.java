@@ -27,10 +27,10 @@ public class LoginController {
 	SettingService settingService;
 	
 	/**
-	 * µÇÂ¼Ò³ÃæÕ¹Ê¾
+	 * ï¿½ï¿½Â¼Ò³ï¿½ï¿½Õ¹Ê¾
 	 * @param model
 	 * @return
-	 * TODO statusÎª½ûÓÃÊ±µÄÑéÖ¤
+	 * TODO statusÎªï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½Ö¤
 	 */
 	@RequestMapping(value = "/login")
 	public String login(
@@ -38,22 +38,22 @@ public class LoginController {
 			String adminPassword,
 			HttpServletRequest request,
 			Model model) {
-		//Ìí¼Ó±êÌâsession
+		//ï¿½ï¿½Ó±ï¿½ï¿½ï¿½session
 		request.getSession().setAttribute("webTitle", settingService.getWebTitle());
 		if (adminPhone == null && adminPassword == null) {
 			return "login";
 		}
-		//µÇÂ¼ÑéÖ¤
+		//ï¿½ï¿½Â¼ï¿½ï¿½Ö¤
 		Admin admin = adminService.login(adminPhone, adminPassword);
 		if (admin == null) {
-			//ÕËºÅÃÜÂë»ØÌî
+			//ï¿½Ëºï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 			model.addAttribute("adminPhone", adminPhone);
 			model.addAttribute("adminPassword", adminPassword);
-			model.addAttribute("error", "ÕËºÅ»òÃÜÂë´íÎó");
+			model.addAttribute("error", "æ‰‹æœºæˆ–å¯†ç é”™è¯¯");
 			return "login";
 		} else {
-			//½«ÓÃ»§·ÇÃô¸ĞĞÅÏ¢´æÈësession,½«µÇÂ¼Ê±¼ä´æÈësession
-			//Ä¬ÈÏ¹ıÆÚÊ±¼äÎªÒ»Ğ¡Ê±
+			//ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½session,ï¿½ï¿½ï¿½ï¿½Â¼Ê±ï¿½ï¿½ï¿½ï¿½ï¿½session
+			//Ä¬ï¿½Ï¹ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ÎªÒ»Ğ¡Ê±
 			request.getSession().setAttribute("admin", admin);
 			request.getSession().setAttribute("adminLoginTime", new Date().getTime());
 			return "redirect:/admin_module/index";
@@ -61,10 +61,10 @@ public class LoginController {
 	}
 	
 //	/**
-//	 * µÇÂ¼±íµ¥½Ó¿Ú£¬ ÒªÇóÊ¹ÓÃpost·½·¨
+//	 * ï¿½ï¿½Â¼ï¿½ï¿½ï¿½Ó¿Ú£ï¿½ Òªï¿½ï¿½Ê¹ï¿½ï¿½postï¿½ï¿½ï¿½ï¿½
 //	 * @return
-//	 * TODO :´íÎóĞÅÏ¢·´À¡
-//	 * TODO :µÇÂ¼È¨ÏŞĞ´½øsession
+//	 * TODO :ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½
+//	 * TODO :ï¿½ï¿½Â¼È¨ï¿½ï¿½Ğ´ï¿½ï¿½session
 //	 */
 //	@RequestMapping(value = "/loginForm", method = RequestMethod.POST)
 //	public String loginForm(
@@ -74,14 +74,14 @@ public class LoginController {
 //			Model model) {
 //		Admin admin = adminService.login(adminPhone, adminPassword);
 //		if (admin == null) {
-//			//ÕËºÅÃÜÂë»ØÌî
+//			//ï¿½Ëºï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 //			model.addAttribute("adminPhone", adminPhone);
 //			model.addAttribute("adminPassword", adminPassword);
-//			model.addAttribute("error", "ÕË»§»òÃÜÂë´íÎó");
+//			model.addAttribute("error", "ï¿½Ë»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
 //			return "login";
 //		} else {
-//			//½«ÓÃ»§·ÇÃô¸ĞĞÅÏ¢´æÈësession,½«µÇÂ¼Ê±¼ä´æÈësession
-//			//Ä¬ÈÏ¹ıÆÚÊ±¼äÎªÒ»Ğ¡Ê±
+//			//ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½session,ï¿½ï¿½ï¿½ï¿½Â¼Ê±ï¿½ï¿½ï¿½ï¿½ï¿½session
+//			//Ä¬ï¿½Ï¹ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ÎªÒ»Ğ¡Ê±
 //			request.getSession().setAttribute("admin", admin);
 //			request.getSession().setAttribute("adminLoginTime", new Date().getTime());
 //			return "redirect:/user_module/index";
@@ -89,14 +89,14 @@ public class LoginController {
 //	}
 	
 	/**
-	 * ÍË³öµÇÂ¼
+	 * ï¿½Ë³ï¿½ï¿½ï¿½Â¼
 	 * @param request
 	 * @param model
 	 * @return
 	 */
 	@RequestMapping("/logout")
 	public String logout(HttpServletRequest request, Model model){
-		//Çå¿Õsession£¬ÍøÕ¾±êÌâ²»Çå¿Õ
+		//ï¿½ï¿½ï¿½sessionï¿½ï¿½ï¿½ï¿½Õ¾ï¿½ï¿½ï¿½â²»ï¿½ï¿½ï¿½
 		request.getSession().invalidate();
 		request.getSession().setAttribute("webTitle", settingService.getWebTitle());
 		return "redirect:/admin/login";

@@ -5,50 +5,50 @@ import org.apache.ibatis.annotations.Param;
 import cn.weilin.backgroundSys.entity.Setting;
 
 /**
- * ¹«¹²ÊôĞÔ Dao
+ * Setting ç½‘ç«™è®¾ç½®Dao
  * @author Chen Weilin
  *
  */
 public interface SettingDao {
 
 	/**
-	 * »ñµÃÍøÕ¾±êÌâ
+	 * è·å¾—ç½‘ç«™æ ‡é¢˜
 	 * @return
 	 */
 	public String getWebTitle();
 	
 	/**
-	 * »ñµÃÍøÕ¾°æÈ¨
+	 * è·å¾—ç½‘ç«™
 	 * @return
 	 */
 	public String getCopyright();
 	
 	
 	/**
-	 * »ñµÃÍøÕ¾ÉèÖÃ£¬°üÀ¨ÍøÕ¾°æÈ¨ºÍ±êÌâ
-	 * @return
+	 * è·å¾—ç½‘ç«™è®¾ç½®
+	 * @return Setting
 	 */
 	public Setting getWebSetting();
 	
 	/**
-	 * ĞŞ¸ÄÍøÕ¾°æÈ¨
+	 * æ›´æ–°ç‰ˆæƒè®¾ç½®
 	 * @param copyright
-	 * @return Ó°ÏìÌõÊı
+	 * @return æ›´æ–°æ¡æ•° å¤±è´¥ä¸º0
 	 */
 	public int updateCopyright(@Param("copyright")String copyright);
 	
 	/**
-	 * ĞŞ¸ÄÍøÕ¾±êÌâ
+	 * æ›´æ–°ç½‘ç«™æ ‡é¢˜
 	 * @param webTitle
-	 * @return Ó°ÏìÌõÊı
+	 * @return æ›´æ–°æ¡æ•°1ï¼Œ å¤±è´¥ä¸º0
 	 */
 	public int updateWebTitle(@Param("webTitle")String webTitle);
 	
 	/**
-	 * ĞŞ¸ÄÍøÕ¾ÕûÌåÉèÖÃ °üÀ¨±êÌâºÍ°áÈ¥ÄÄ
+	 * æ›´æ–°ç½‘ç«™è®¾ç½®
 	 * @param webTitle
 	 * @param copyright
-	 * @return Ó°ÏìÌõÊı
+	 * @return æ›´æ–°æ¡æ•° å¤±è´¥ä¸º0
 	 */
 	public int updateWebSetting(@Param("webTitle")String webTitle, @Param("copyright")String copyright);
 }
