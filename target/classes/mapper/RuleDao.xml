@@ -41,4 +41,8 @@
 		order by sort
 	</select>
 	
+	<select id="getCountOfParentMenu" resultType="int">
+		select count(id) from rule where parent_id = 0
+	</select>
+	
 </mapper>

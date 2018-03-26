@@ -34,4 +34,11 @@ public interface RuleDao {
 	 * @return
 	 */
 	public List<Rule> getRuleListByParentSort(@Param("sort")int sort);
+	
+	/**
+	 * 获得父级菜单的个数
+	 * 用于分页
+	 * @return
+	 */
+	public int getCountOfParentMenu();
 }

@@ -59,4 +59,9 @@ public class TestRoleAndRuleDao {
 		}
 	}
 	
+	@Test
+	public void TestgetCountOfParentMenu() {
+		System.out.println(ruleDao.getCountOfParentMenu());
+	}
+	
 }

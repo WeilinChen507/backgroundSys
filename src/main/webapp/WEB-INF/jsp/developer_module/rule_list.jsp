@@ -5,7 +5,12 @@
 <html>
 <head>
 	<%@ include file="../common/head.jsp"  %>
-
+<style type="text/css">
+	.fenyeWrap {
+	    text-align: center;
+	    margin-top: 25px;
+	}
+</style>
 </head>
 <body class="layui-layout-body">
 	<%@ include file="../common/nav.jsp" %>
@@ -68,7 +73,9 @@
 							                            <c:when test="${item.isMenu == 1}">二级菜单</c:when>
 						                            </c:choose>
 					                            </td>
-					                            <td>${item.createTime}</td>
+					                            <td>
+					                            	<fmt:formatDate value="${item.createTime}" pattern="yyyy-MM-dd HH:mm:ss" />
+					                            </td>
 					                            <td>${item.sort}</td>
 					                            <td>
 					                            	<a href="" class="layui-btn layui-btn-normal layui-btn-mini">
@@ -103,8 +110,10 @@
 									                            <c:when test="${child.isMenu == 1}">二级菜单</c:when>
 								                            </c:choose>
 							                            </td>
-								                            <td>${child.createTime}</td>
-								                            <td>${child.sort}</td>
+								                        <td>
+									                        <fmt:formatDate value="${child.createTime}" pattern="yyyy-MM-dd HH:mm:ss" />
+								                        </td>
+								                        <td>${child.sort}</td>
 							                            <td>
 							                            	<a href="" class="layui-btn layui-btn-normal layui-btn-mini">
 						                        				编辑
@@ -138,7 +147,9 @@
 											                            <c:when test="${tChild.isMenu == 1}">二级菜单</c:when>
 										                            </c:choose>
 									                            </td>
-									                            <td>${tChild.createTime}</td>
+									                            <td>
+									                            	<fmt:formatDate value="${tChild.createTime}" pattern="yyyy-MM-dd HH:mm:ss" />
+									                            </td>
 									                            <td>${tChild.sort}</td>
 									                            <td>
 									                            	<a href="" class="layui-btn layui-btn-normal layui-btn-mini">
@@ -158,7 +169,10 @@
 			          			</c:if>
 			                    </tbody>
 			                </table>
-			                
+			                <div class="fenyeWrap">
+								<div id="fenye"></div>
+								<div>共 ${fn:length(list)}条记录</div>
+							</div>
 			                
 			            </div>
 					</div>
@@ -167,4 +181,46 @@
 		</div>
 	
 </body>
+<script>
+	//权限排序
+	<!--
+	function sortRule(obj,ruleId){
+		var sortNum = $(obj).val();
+		$.get('sortRule',{"ruleId":ruleId,"sortNum":sortNum},function(data){
+			if(data.code == 0 || data.isok==-1 || data.isok==false){
+				showTs(0,data.msg,3000);
+			}else if(data.isok==true){
+				showTs(1,data.msg,2000);
+			}else{
+				showTs(0,'网络异常',3000);
+			}
+		});
+	}
+	-->
+	layui.use(['form','laypage'], function(){
+		//列表筛选
+		var form = layui.form;
+        var laypage = layui.laypage;
+		form.on('select(oneLevelRule)', function(data) {
+            $(this).parents('form').submit();
+        });
+		
+		//分页
+        laypage.render({
+            elem: 'fenye',
+            count: "${pagination.sumPage}", //总条数
+            curr: "${pagination.currentPage}", //当前页
+            groups: 5, //连续显示分页数
+            limit:1,
+            jump: function(obj, first){
+                if(!first){
+                    var currPage = obj.curr;//得到了当前页，用于向服务端请求对应数据
+                    
+                    location.href =  "${pageContext.request.contextPath}" + "/" + "developer_module/rule_list" + "/" + currPage;
+                }
+            }
+        });
+	});
+</script>
+
 </html>

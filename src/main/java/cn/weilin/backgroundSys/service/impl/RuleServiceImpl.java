@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import cn.weilin.backgroundSys.dao.RuleDao;
+import cn.weilin.backgroundSys.dto.Pagination;
 import cn.weilin.backgroundSys.entity.Rule;
 import cn.weilin.backgroundSys.service.RuleService;
 /**
@@ -27,6 +28,17 @@ public class RuleServiceImpl implements RuleService {
 		int sort = Integer.parseInt(page);
 		List<Rule> list = ruleDao.getRuleListByParentSort(sort);
 		return list;
+	}
+
+	@Override
+	public Pagination getPaginationOfRuleList(String page) {
+		Pagination pagination = new  Pagination();
+		if (null == page || "".equals(page)) {
+			page = "1";
+		}
+		pagination.setCurrentPage(Integer.parseInt(page));
+		pagination.setSumPage(ruleDao.getCountOfParentMenu());
+		return pagination;
 	}
 
 }

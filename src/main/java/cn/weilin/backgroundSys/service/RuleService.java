@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import cn.weilin.backgroundSys.dto.Pagination;
 import cn.weilin.backgroundSys.entity.Rule;
 
 /**
@@ -19,4 +20,10 @@ public interface RuleService {
 	 * @return 当前页数的rule集合
 	 */
 	public List<Rule> getAllRuleByPage(String page);
+	
+	/**
+	 * 获得rule列表的分页参数
+	 * @return
+	 */
+	public Pagination getPaginationOfRuleList(String page);
 }

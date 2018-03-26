@@ -7,9 +7,11 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import cn.weilin.backgroundSys.dto.Pagination;
 import cn.weilin.backgroundSys.entity.Rule;
 import cn.weilin.backgroundSys.service.RoleService;
 import cn.weilin.backgroundSys.service.RuleService;
@@ -78,18 +80,41 @@ public class DeveloperModuleController {
 	}
 	
 	/**
+	 *  权限列表页 首页
+	 *  每一页对于一个模块及其子模块
+	 * @param model
+	 * @return
+	 */
+	@RequestMapping(value = "/rule_list",
+			method = RequestMethod.GET)
+	public String ruleList(Model model) {
+		//默认从分页的第一页开始浏览
+		String page = "1";
+		List<Rule> list = ruleService.getAllRuleByPage(page);
+		model.addAttribute("list", list);
+		//用于分页的变量
+		Pagination pagination = ruleService.getPaginationOfRuleList(page);
+		model.addAttribute("pagination", pagination);
+		System.out.println(pagination.getSumPage() + "   " + pagination.getCurrentPage() + "  " + page);
+		return "developer_module/rule_list";
+	}
+	
+	/**
 	 * 权限列表页 分页查询
 	 * 每一页对于一个模块及其子模块
 	 * @param page 页数从1开始 默认为0
 	 * @param model
 	 * @return
 	 */
-	@RequestMapping(value = "/rule_list",
+	@RequestMapping(value = "/rule_list/{page}",
 			method = RequestMethod.GET)
-	public String ruleList(String page,
+	public String ruleList(@PathVariable("page") String page,
 			Model model) {
 		List<Rule> list = ruleService.getAllRuleByPage(page);
 		model.addAttribute("list", list);
+		//用于分页的变量
+		Pagination pagination = ruleService.getPaginationOfRuleList(page);
+		model.addAttribute("pagination", pagination);
 		return "developer_module/rule_list";
 	}
 	
