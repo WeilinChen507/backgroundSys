@@ -4,7 +4,10 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import cn.weilin.backgroundSys.dto.AdminForm;
 import cn.weilin.backgroundSys.entity.Admin;
+import cn.weilin.backgroundSys.exception.BaseException;
+import cn.weilin.backgroundSys.exception.InputWrongFormatException;
 
 /**
  * 管理员业务接口
@@ -25,4 +28,36 @@ public interface AdminService {
 	 * @return 所有管理员的集合
 	 */
 	public List<Admin> getAdminList();
+	
+	/**
+	 * 通过id获取管理员
+	 * @param id
+	 * @return
+	 */
+	public Admin GetAdminById(int id);
+	
+	/**
+	 * 添加管理员
+	 * @param adminForm
+	 * @throws InputWrongFormatException
+	 * @throws BaseException
+	 */
+	public void addAdminByForm(AdminForm adminForm) throws InputWrongFormatException, BaseException;
+	
+	/**
+	 * 删除该id的管理员
+	 * @param id
+	 */
+	public boolean deleteById(int id);
+	
+	/**
+	 * 编辑admin信息
+	 * @param adminForm
+	 * @throws InputWrongFormatException
+	 * @throws BaseException
+	 */
+	public void editAdminByForm(AdminForm adminForm) throws InputWrongFormatException, BaseException;
+	
+
+	
 }

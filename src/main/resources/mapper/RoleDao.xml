@@ -18,4 +18,37 @@
 		from role
 	</select>
 	
+	<select id="getRoleById" resultType="Role">
+		select id, role_name, rule_ids, status, remark, create_time, update_time 
+		from role
+		where id = #{id}
+	</select>
+	
+	<select id="getRoleByName" resultType="Role">
+		select id, role_name, rule_ids, status, remark, create_time, update_time 
+		from role
+		where role_name = #{roleName}
+	</select>
+	
+	<insert id="addRoleByRole"> 
+		insert into role
+		(role_name, rule_ids, status, remark, create_time)
+		values
+		(#{role.roleName}, #{role.ruleIds}, #{role.status}, #{role.remark}, #{time})
+	</insert>
+	
+	<update id="updateRoleByRole">
+		update role set 
+			role_name = #{role.roleName},
+			rule_ids = #{role.ruleIds},
+			status = #{role.status},
+			remark = #{role.remark},
+			update_time = #{time}
+		where id = #{role.id}
+	</update>
+	
+	<delete id="deleteRoleById">
+		delete from role where id = #{id}
+	</delete>
+	
 </mapper>

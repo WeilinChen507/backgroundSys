@@ -1,6 +1,7 @@
 package dao;
 
 
+import java.util.Date;
 import java.util.List;
 
 import org.junit.Test;
@@ -11,6 +12,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.util.DigestUtils;
 
 import cn.weilin.backgroundSys.dao.AdminDao;
+import cn.weilin.backgroundSys.dto.AdminForm;
 import cn.weilin.backgroundSys.entity.Admin;
 
 
@@ -33,7 +35,7 @@ public class TestAdminDao {
 			System.out.println(admin.getId() + "  "
 					+ admin.getAdminPhone() + "  "
 					+ admin.getAdminPassword());
-			System.out.println("创建时间为" + admin.getCreateTime());
+			System.out.println("锟斤拷锟斤拷时锟斤拷为" + admin.getCreateTime());
 		}
 	}
 	
@@ -50,4 +52,18 @@ public class TestAdminDao {
 		}
 	}
 	
+	@Test
+	public void testaddAdminByAdminForm() {
+		AdminForm form = new AdminForm();
+		form.setAdminAccount("1111111");
+		form.setAdminFullname("娴嬭瘯");
+		form.setAdminPassword("123456");
+		form.setAdminPhone("13145121213");
+		//form.setRoleId(1);
+		form.setStatus(1);
+		
+		int i = adminDao.addAdminByAdminForm(form);
+		System.out.println(i);
+		System.out.println(form.getId());
+	}
 }

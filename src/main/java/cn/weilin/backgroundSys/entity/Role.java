@@ -99,7 +99,21 @@ public class Role {
 	public Role() {
 		super();
 	}
-	
-	
-	
+
+	public Role(String roleName, String ruleIds, Integer status, String remark ) {
+		super();
+		this.roleName = roleName;
+		this.ruleIds = ruleIds;
+		this.status = (short) ((int)status);
+		this.remark = remark;
+	}
+
+	public Role(Integer id2, String roleName2, String formIdsToString, Integer status2, String remark2) {
+		this.id = id2;
+		this.roleName = roleName2;
+		this.ruleIds = formIdsToString;
+		this.status = (short) ((int)status2);
+		this.remark = remark2;	
+	}
+
 }

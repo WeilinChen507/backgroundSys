@@ -34,7 +34,7 @@ public class LoginController {
 	 * 登录页面
 	 * @param model
 	 * @return
-	 * TODO statusΪ����ʱ����֤
+	 * TODO status验证֤
 	 */
 	@RequestMapping(value = "/login")
 	public String login(

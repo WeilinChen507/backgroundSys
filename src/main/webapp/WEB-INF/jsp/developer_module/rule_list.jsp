@@ -17,13 +17,15 @@
 	
 	<div class="layui-body" id="content_body">
 			<!-- 内容主体区域 -->
+			<blockquote class="layui-elem-quote layui-wran-color" style="margin:15px 15px 0 15px;">注意：权限是整个系统的控制核心，非开发人员请勿操作！</blockquote>
+			
 			<div style="padding: 15px;">
 				<fieldset class="layui-elem-field layui-field-title">
 					<legend>权限管理</legend>
 					<div class="layui-field-box">
 						<!-- 内容主体区域 -->
 			            <div style="padding: 15px;">
-			             	<a href="" class="layui-btn layui-btn-normal layui-btn-small">
+			             	<a href="add_rule" class="layui-btn layui-btn-normal layui-btn-small">
 		                        <i class="layui-icon">&#xe608;</i> 添加权限
 		                    </a>
 			                
@@ -78,10 +80,10 @@
 					                            </td>
 					                            <td>${item.sort}</td>
 					                            <td>
-					                            	<a href="" class="layui-btn layui-btn-normal layui-btn-mini">
+					                            	<a href="<c:url value='/developer_module/edit_rule/${item.id}' />" class="layui-btn layui-btn-normal layui-btn-mini">
 				                        				编辑
 				                       				</a>
-							                       <a href="" class="layui-btn layui-btn-danger layui-btn-mini">
+							                       <a href="<c:url value='/developer_module/delete_rule/${item.id}' />" class="layui-btn layui-btn-danger layui-btn-mini">
 							                        	删除
 							                       </a>
 					                            </td>
@@ -115,10 +117,10 @@
 								                        </td>
 								                        <td>${child.sort}</td>
 							                            <td>
-							                            	<a href="" class="layui-btn layui-btn-normal layui-btn-mini">
+							                            	<a href="<c:url value='/developer_module/edit_rule/${child.id}' />" class="layui-btn layui-btn-normal layui-btn-mini">
 						                        				编辑
 						                       				</a>
-									                       <a href="" class="layui-btn layui-btn-danger layui-btn-mini">
+									                       <a href="<c:url value='/developer_module/delete_rule/${child.id}' />" class="layui-btn layui-btn-danger layui-btn-mini">
 									                        	删除
 									                       </a>
 							                            </td>
@@ -152,10 +154,10 @@
 									                            </td>
 									                            <td>${tChild.sort}</td>
 									                            <td>
-									                            	<a href="" class="layui-btn layui-btn-normal layui-btn-mini">
+									                            	<a href="<c:url value='/developer_module/edit_rule/${tChild.id}' />" class="layui-btn layui-btn-normal layui-btn-mini">
 								                        				编辑
 								                       				</a>
-											                       <a href="" class="layui-btn layui-btn-danger layui-btn-mini">
+											                       <a href="<c:url value='/developer_module/delete_rule/${tChild.id}' />" class="layui-btn layui-btn-danger layui-btn-mini">
 											                        	删除
 											                       </a>
 									                            </td>
@@ -171,7 +173,7 @@
 			                </table>
 			                <div class="fenyeWrap">
 								<div id="fenye"></div>
-								<div>共 ${fn:length(list)}条记录</div>
+								<div>当前页共 ${fn:length(list)} 条记录</div>
 							</div>
 			                
 			            </div>

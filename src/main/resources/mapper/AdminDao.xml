@@ -3,6 +3,44 @@
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.weilin.backgroundSys.dao.AdminDao">
+
+	<resultMap type="Admin" id="AdminWithRoleRule">
+		<id  property="id" column="id" />
+		<result property="adminAccount" column="admin_account" />
+		<result property="adminPassword" column="admin_password" />
+		<result property="adminFullname" column="admin_fullname" />
+		<result property="adminPhone" column="admin_phone" />
+		<result property="status" column="status" />
+		<result property="adminTiket" column="admin_tiket" />
+		<result property="lastLoginTime" column="last_login_time" />
+		<result property="lastLoginIp" column="last_login_ip" />
+		<result property="createTime" column="create_time" />
+		<result property="updateTime" column="update_Time" />
+		<!-- 定义一对一关联 -->
+		<association property="role" javaType="Role" >
+			<id property="id" column="role_id" />
+			<result property="roleName" column="role_name" />
+			<result property="ruleIds" column="rule_ids" />
+			<result property="status" column="status" />
+			<result property="remark" column="remark" />
+			<result property="createTime" column="role_create_time" />
+			<result property="updateTime" column="role_update_time" />
+		</association>
+		<!-- 定义一对多关联 -->
+		<!-- error! <collection property="ruleList" javaType="Rule" >
+			<id property="id" column="rule_id" />
+			<result property="ruleName" column="rule_name" />
+			<result property="rule" column="rule" />
+			<result property="isMenu" column="is_menu" />
+			<result property="parentId" column="parent_id" />
+			<result property="icon" column="icon" />
+			<result property="sort" column="sort" />
+			<result property="status" column="status" />
+			<result property="createTime" column="rule_create_time" />
+			<result property="updateTime" column="update_time" />
+		</collection> -->
+	</resultMap>
+
 	<!-- 为AdminDao提供sql配置 -->
 	
 	<select id="login" resultType="Admin">
@@ -13,7 +51,7 @@
 	
 	
 	<select id="getAllAdminWithRole" resultType="Admin">
-		select A.id, A.admin_account, A.admin_fullname, A.admin_phone, A.status,
+		select A.id, A.admin_account, A.admin_fullname, A.admin_phone, A.status, A.create_time,
 			   R.role_name "role.role_name", 
 			   R.rule_ids "role.rule_ids"
 		from admin A left join admin_role AR
@@ -22,5 +60,35 @@
 				on R.id = AR.role_id
 	</select>
 	
+	<select id="getAdminWithRoleById" resultMap="AdminWithRoleRule">
+		select A.id, A.admin_account, A.admin_fullname, A.admin_phone, A.status, A.create_time,
+			   R.id role_id, R.role_name , R.rule_ids
+		from admin A left join admin_role AR
+				on A.id = AR.admin_id
+					 left join role R
+				on R.id = AR.role_id
+		where A.id = #{id} 
+	</select>
 	
+	<insert id="addAdminByAdminForm" parameterType="cn.weilin.backgroundSys.dto.AdminForm" useGeneratedKeys="true" keyProperty="id" >
+		insert into admin 
+			(admin_account, admin_password, admin_fullname, admin_phone, status, create_time)
+			values
+			(#{adminAccount}, #{adminPassword}, #{adminFullname}, #{adminPhone}, #{status},  (SELECT TIMESTAMPDIFF(SECOND, '1970-1-1 8:0:0', CURDATE())))
+	</insert>
+	
+	<delete id="deleteAdminById">
+		delete from admin where id = ${id}
+	</delete>
+	
+	<update id="updateByAdminForm"  parameterType="cn.weilin.backgroundSys.dto.AdminForm" useGeneratedKeys="true" keyProperty="id" >
+		update admin set 
+			admin_account = #{adminAccount},
+			admin_password =  #{adminPassword},
+			admin_fullname =  #{adminFullname},
+			admin_phone =  #{adminPhone},
+			status =  #{status},
+			create_time =  (SELECT TIMESTAMPDIFF(SECOND, '1970-1-1 8:0:0', CURDATE()))
+		where id = #{id}
+	</update>
 </mapper>

@@ -18,17 +18,13 @@
 					<div class="layui-field-box">
 						<!-- 内容主体区域 -->
 			            <div style="padding: 15px;">
-			             	<a href="addRole" class="layui-btn layui-btn-normal layui-btn-small">
+			             	<a href="add_role" class="layui-btn layui-btn-normal layui-btn-small">
 		                        <i class="layui-icon">&#xe608;</i> 添加角色
 		                    </a>
 			                
 			                <!-- 角色列表 -->
 							<table lay-even class="layui-table">
-			                    <colgroup>
-			                        <col width="150">
-			                        <col width="200">
-			                        <col>
-			                    </colgroup>
+			                    
 			                    <thead>
 			                        <tr>                        
 			                            <th>ID</th>
@@ -48,15 +44,17 @@
 				                            <td>${item.ruleIds}</td>
 				                            <td>
 				                            <c:if test="${item.status == 1}">正常</c:if>
-				                            <c:if test="${item.status == 0}">禁用</c:if>
+				                            <c:if test="${item.status == 2}">禁用</c:if>
 				                            </td>
 				                            <td>${item.remark}</td>
-				                            <td>${item.createTime}</td>
 				                            <td>
-				                            	<a href="editRole" class="layui-btn layui-btn-normal layui-btn-mini">
+				                            	 <fmt:formatDate value="${item.createTime}" pattern="yyyy-MM-dd HH:mm:ss" />
+				                            </td>
+				                            <td>
+				                            	<a href="edit_role/${item.id}" class="layui-btn layui-btn-normal layui-btn-mini">
 			                        				编辑
 			                       				</a>
-						                       <a href="deleteRole" class="layui-btn layui-btn-danger layui-btn-mini">
+						                       <a href="delete_role/${item.id}" class="layui-btn layui-btn-danger layui-btn-mini">
 						                        	删除
 						                       </a>
 				                            </td>

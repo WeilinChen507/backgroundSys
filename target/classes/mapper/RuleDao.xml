@@ -4,6 +4,11 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.weilin.backgroundSys.dao.RuleDao">
 	
+	<select id="getRuleById" resultType="Rule">
+		select id, rule_name, rule, is_menu, parent_id, icon, sort
+		from rule
+		where id = #{id}
+	</select>
 	
 	<!-- 此处${ruleIds} 不能更换为 #{ruleIds} 
 		此处无发生sql注入的风险
@@ -17,10 +22,16 @@
 		order by sort 
 	</select>
 	
+	<select id="getAllAbleRuleList" resultType="Rule">
+		select id, rule_name, rule, is_menu, parent_id, icon, sort
+		from rule 
+		where status = 1
+		order by sort 
+	</select>
+	
 	<select id="getAllRuleList" resultType="Rule">
 		select id, rule_name, rule, is_menu, parent_id, icon, sort
 		from rule 
-		where status = 1 
 		order by sort 
 	</select>
 	
@@ -44,5 +55,39 @@
 	<select id="getCountOfParentMenu" resultType="int">
 		select count(id) from rule where parent_id = 0
 	</select>
+	
+	<insert id="addRule" >
+		insert into rule 
+		(rule_name, rule, is_menu, parent_id, sort, status, create_time)
+		values
+		(#{rule.ruleName}, #{rule.rule}, #{rule.isMenu}, #{rule.parentId}, #{rule.sort}, #{rule.status}, #{createTime})
+	</insert>
+	
+	<!-- 是否应该删除其parent 需求暂未定
+		若后期需要 则修改sql语句为
+		delete from rule
+		 where id = #{id} 
+		 	or id = (select parent_id from rule where id = #{id}) 
+	 -->
+	<delete id="deleteById" >
+		delete from rule
+		where id = #{id}
+	</delete>
+	
+	<update id="updateByForm">
+		update rule 
+			<trim prefix="set" suffixOverrides="," suffix=" where id = #{form.id} ">
+				<if test="form != null">
+					<if test="form.ruleName != null">rule_name = #{form.ruleName}, </if>
+					<if test="form.rule != null">rule = #{form.rule}, </if>
+					<if test="form.isMenu != null">is_menu = #{form.isMenu}, </if>
+					<if test="form.parentId != null">parent_id = #{form.parentId}, </if>
+					<if test="form.sort != null">sort = #{form.sort}, </if>
+					<if test="form.status != null">status = #{form.status}, </if>
+					update_time = #{updateTime},
+				</if>
+			</trim>
+
+	</update>
 	
 </mapper>

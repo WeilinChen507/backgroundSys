@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.weilin.backgroundSys.dao.AdminRoleDao">
+	
+	<insert id="addMapping">
+		insert into admin_role
+			(admin_id, role_id, create_time)
+			values
+			(#{adminId}, #{roleId},(SELECT TIMESTAMPDIFF(SECOND, '1970-1-1 8:0:0', CURDATE())))
+	</insert>
+	
+	<update id="updateMapping">
+		update admin_role set
+			role_id = #{roleId},
+			update_time = (SELECT TIMESTAMPDIFF(SECOND, '1970-1-1 8:0:0', CURDATE()))
+		where admin_id = #{adminId}
+	</update>
+	
+	<delete id="deleteMappingByAdminId">
+		delete from admin_role where admin_id = #{adminId}
+	</delete>
+	
+	<delete id="deleteMappingById">
+		delete from admin_role where id = #{id}
+	</delete>
+	
+</mapper>

@@ -3,6 +3,8 @@
   PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
+	
+	
 	<!-- global属性 -->
 	<settings>
 		<!-- 使用jdbc的getGeneratedKeys获得自增主键值 -->
