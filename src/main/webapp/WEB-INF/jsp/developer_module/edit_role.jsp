@@ -20,7 +20,7 @@
 			<!-- 内容主体区域 -->			
 			<div style="padding: 15px;">
 				<fieldset class="layui-elem-field layui-field-title">
-					<legend>添加角色</legend>
+					<legend>编辑角色</legend>
 					<div class="layui-field-box">
 						<!-- 内容主体区域 -->
 			            <div style="padding: 15px;">

@@ -99,6 +99,8 @@ public class AdminServiceImpl implements AdminService {
 		}
 		//写入admin表和一对一映射表
 		try {
+			//加密
+			adminForm.setAdminPassword(MyStringUtils.md5(adminForm.getAdminPassword()));
 			adminDao.addAdminByAdminForm(adminForm);
 			adminRoleDao.addMapping(adminForm.getId(), adminForm.getRoleId());
 		} catch (Exception e) {
@@ -162,6 +164,8 @@ public class AdminServiceImpl implements AdminService {
 		}
 		//数据库操作
 		try {
+			//密码加密
+			adminForm.setAdminPassword(MyStringUtils.md5(adminForm.getAdminPassword()));
 			//更新admin表和映射表
 			adminDao.updateByAdminForm(adminForm);
 			adminRoleDao.updateMapping(adminForm.getId(), adminForm.getRoleId());

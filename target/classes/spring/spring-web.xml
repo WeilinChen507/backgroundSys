@@ -17,8 +17,6 @@
     c:xml,json的默认读写支持-->
     <mvc:annotation-driven/>
 
-    
-
     <!--2.静态资源默认servlet配置-->
     <!--
         1).加入对静态资源处理：js,gif,png
@@ -26,13 +24,19 @@
     -->
      <mvc:default-servlet-handler/>
 
-	<!-- 配置拦截器拦截登录 -->
+	<!-- 配置拦截器拦截登录、权限 -->
     <mvc:interceptors>
+    	<!-- login -->
     	<mvc:interceptor>
     		<!-- 拦截所有请求，在方法中过滤登录请求 -->
     		<mvc:mapping path="/**"/>
     		<!-- 定义interceptor -->
     		<bean class="cn.weilin.backgroundSys.interceptor.AuthorizationInterceptor" />
+    	</mvc:interceptor>
+    	<!-- rule -->
+    	<mvc:interceptor>
+    		<mvc:mapping path="/**"/>
+    		<bean class="cn.weilin.backgroundSys.interceptor.RuleInterceptor" />
     	</mvc:interceptor>
     </mvc:interceptors>
     

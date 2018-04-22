@@ -18,7 +18,7 @@ import cn.weilin.backgroundSys.entity.Admin;
 public class AuthorizationInterceptor implements HandlerInterceptor {
 
 	//需要忽略拦截的请求
-	private static final String[] IGNORE_URI = {"/loginForm", "login"};
+	private static final String[] IGNORE_URI = {"login", "logout"};
 	
 	/**
 	 * 通过session判断是否登录
@@ -63,16 +63,12 @@ public class AuthorizationInterceptor implements HandlerInterceptor {
 
 	@Override
 	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
-			ModelAndView modelAndView) throws Exception {
-		// TODO Auto-generated method stub
-		
+			ModelAndView modelAndView) throws Exception {		
 	}
 
 	@Override
 	public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex)
-			throws Exception {
-		// TODO Auto-generated method stub
-		
+			throws Exception {		
 	}
 
 }

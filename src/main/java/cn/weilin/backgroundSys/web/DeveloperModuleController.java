@@ -130,7 +130,7 @@ public class DeveloperModuleController {
 			request.setAttribute("roleForm", roleForm);
 			return "developer_module/add_role";
 		}
-		return "developer_module/add_role";
+		return "redirect:/developer_module/role_list";
 	}
 	
 	/**
@@ -201,8 +201,7 @@ public class DeveloperModuleController {
 			model.addAttribute("tips", "系统繁忙，请稍候再试");
 			return "developer_module/edit_role";
 		}
-		model.addAttribute("tips", "修改成功");
-		return "developer_module/edit_role";
+		return "redirect:/developer_module/role_list";
 	}
 	
 	/**

@@ -25,7 +25,7 @@
 					<div class="layui-field-box">
 						<!-- 内容主体区域 -->
 			            <div style="padding: 15px;">
-			             	<a href="add_rule" class="layui-btn layui-btn-normal layui-btn-small">
+			             	<a href="<c:url value='/developer_module/add_rule' />" class="layui-btn layui-btn-normal layui-btn-small">
 		                        <i class="layui-icon">&#xe608;</i> 添加权限
 		                    </a>
 			                
